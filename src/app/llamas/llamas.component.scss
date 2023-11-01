@@ -1,0 +1,38 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  padding-top: 40px;
+}
+
+.llamas {
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.walking-area {
+  align-self: center;
+  border-left: 10px dotted darkgreen;
+  border-right: 10px dotted darkgreen;
+  margin-top: 50px;
+  width: 800px;
+  height: 25px;
+  position: relative;
+  background: lightgreen;
+}
+
+.llama {
+  position: absolute;
+  font-size: 50px;
+  bottom: 0;
+  transform-origin: 50% 0;
+  transform: scaleX(-1);
+  margin-right: -25px;
+  white-space: nowrap;
+}
+
+.no-match {
+  align-self: center;
+}

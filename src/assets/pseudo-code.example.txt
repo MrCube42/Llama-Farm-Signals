@@ -1,0 +1,30 @@
+// Deklarativ
+aktuellerSuchFilter = '';                                // über UI gegeben
+alleLamas = ['Aramis', 'Portos', ...];                   // über Netzwerk angeliefert
+gefiltereLamas = alleLamas.filter(aktuellerSuchFilter);
+anzahlErgebnisse = gefiltereLamas.anzahl;
+
+datenUpdateErhalten(neueLamas) {
+  alleLamas = neueLamas;
+}
+
+// Imperativ
+aktuellerSuchFilter = '';                                // über UI gegeben
+alleLamas = ['Aramis', 'Portos', ...];                   // über Netzwerk angeliefert
+gefiltereLamas = [];                                     // Initial nicht gesetzt
+anzahlErgebnisse = 0:                                    // Initial nicht gesetzt
+
+datenUpdateErhalten(neueLamas) {
+  alleLamas = neueLamas;
+  updateDerInternenDaten();                              // Aufruf darf nicht vergessen werden
+}
+
+updateDerInternenDaten() {
+  gefilterteLlamas = alleLamas.filter(aktuellerSuchFilter);
+  anzahlErgebnisse = gefiltereLamas.anzahl;
+}
+
+suchFilterÄnderung(neuerSuchFilter) {
+  aktuellerSuchFilter = neuerSuchFilter;
+  updateDerInternenDaten();                             // Aufruf darf nicht vergessen werden
+}

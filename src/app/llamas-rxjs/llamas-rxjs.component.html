@@ -1,0 +1,39 @@
+<h1 style="text-align: center">🌞 Welcome to the Llama farm 🦙🥕</h1>
+<mat-form-field>
+  <mat-label>Find a llama by name</mat-label>
+  <input
+    matInput
+    type="text"
+    [value]="searchText$ | async"
+    (input)="searchTextChanged($any($event.target).value)"
+  />
+  <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+<mat-card class="llamas">
+  <div class="llamas" *ngIf="filteredLlamas$ | async as filteredLlamas">
+    <div *ngIf="filteredLlamas.length > 0">Choose a llama to walk with...</div>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let llama of filteredLlamas">
+        <button mat-stroked-button (click)="walkTheLlama(llama)">
+          <span [style.color]="llama.leashColor" [style.font-size.px]="30"
+            >〰</span
+          >{{ llama.name }}
+        </button>
+      </mat-list-item>
+    </mat-list>
+    <div *ngIf="filteredLlamas.length < 1" class="no-match">
+      🤷‍♀️🤷‍♂️ No llama with this name
+    </div>
+  </div>
+  <div class="walking-area">
+    <span
+      *ngIf="selectedLlama$ | async as selectedLlama"
+      class="llama"
+      [style.left.px]="llamaPosition$ | async"
+      [style.transform]="
+        (llamaDirection$ | async) === 'right' ? 'scaleX(-1)' : 'scaleX(1)'
+      "
+      >🚶‍♂️<span [style.color]="selectedLlama?.leashColor">〰</span>🦙</span
+    >
+  </div>
+</mat-card>
